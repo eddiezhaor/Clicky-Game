@@ -5,7 +5,7 @@ const Header = props => (
                 <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
                     <div className="container">
                         <a className="navbar-brand" href="#">Clicky Game</a>
-                        <a className="title title2">Click an image to begin!</a>
+                        <a className="title title2" id={props.id}>{props.message}</a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                         </button>

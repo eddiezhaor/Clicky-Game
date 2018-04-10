@@ -5,7 +5,10 @@ class Content extends React.Component {
         imageLink: [{id:1, link:"./clickImage/picture1.jpg"},{id:2, link:"./clickImage/picture2.png"},{id:3, link:"./clickImage/picture3.jpeg"},{id:4, link:"./clickImage/picture4.jpg"},{id:5, link:"./clickImage/picture5.png"},{id:6, link:"./clickImage/picture6.png"},{id:7, link:"./clickImage/picture7.png"},{id:8, link:"./clickImage/picture8.png"},{id:9, link:"./clickImage/picture9.png"},{id:10, link:"./clickImage/picture10.jpg"},{id:11, link:"./clickImage/picture11.png"},{id:12, link:"./clickImage/picture12.png"}],
         number: 0,
         score: 0,
-        topScore: 0
+        topScore: 0,
+        guessed:[],
+        message:"Click an image to begin!",
+        id:""
     };
     shuffle = (array,event) =>{
         let i = 0;
@@ -17,32 +20,38 @@ class Content extends React.Component {
           array[i] = array[j]
           array[j] = temp
         }
-        if(this.state.number!==event.target.getAttribute('data-id')){
+        if(this.state.guessed.indexOf(event.target.getAttribute('data-id'))<1){
+            this.state.guessed[this.state.guessed.length]=event.target.getAttribute('data-id');
             if(this.state.topScore <= this.state.score){
                 this.setState({
                     imageLink:array,
                     number:event.target.getAttribute('data-id'),
                     score: this.state.score + 1,
-                    topScore:this.state.topScore+1
+                    topScore:this.state.topScore+1,
+                    guessed:this.state.guessed,
+                    message:"New Record!!",
+                    id:"Newmessage"
                 })
             }else{
                 this.setState({
                     imageLink:array,
                     number:event.target.getAttribute('data-id'),
-                    score: this.state.score + 1
+                    score: this.state.score + 1,
+                    guessed:this.state.guessed,
+                    message:"Right!!",
+                    id:"message" 
                 })
             }
-            console.log(event.target.getAttribute('data-id'))
-            console.log(this.state.number)
         }else{
             this.setState({
                 imageLink:array,
                 number:0,
-                score: 0
+                score: 0,
+                guessed:[],
+                message:"Click an image to begin!",
+                id:"wrongMessage"
             })
         }
-     
-        console.log(this.state.score)
       }
     refresh = () =>{
         return (
@@ -54,7 +63,7 @@ class Content extends React.Component {
    render(){
     return (
             <div>
-                <Header score={this.state.score} topScore={this.state.topScore}></Header>
+                <Header id={this.state.id}message={this.state.message} score={this.state.score} topScore={this.state.topScore}></Header>
                 <main className="MainContainer">
                     {this.refresh()}
                 </main>
