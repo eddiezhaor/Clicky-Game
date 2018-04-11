@@ -7,7 +7,6 @@ import './bootstrap.min.css';
 import './App.css';
 // var imageLink=[{id:1, link:"./clickImage/picture1.jpg"},{id:2, link:"./clickImage/picture1.jpg"},{id:3, link:"./clickImage/picture1.jpg"},{id:4, link:"./clickImage/picture1.jpg"},{id:5, link:"./clickImage/picture1.jpg"},{id:6, link:"./clickImage/picture1.jpg"},{id:7, link:"./clickImage/picture1.jpg"},{id:8, link:"./clickImage/picture1.jpg"},];
 class App extends React.Component {
-  
     render(){
         return (
             <Wrapper>
