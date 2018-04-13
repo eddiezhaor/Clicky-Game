@@ -58,6 +58,7 @@ class Content extends React.Component {
     return (
             <div>
                 <Header id={this.state.id} message={this.state.message} score={this.state.score} topScore={this.state.topScore}></Header>
+                <a href="https://github.com/eddiezhaor/Evil-Morties">Github</a>
                 <Image 
                     image={this.state.imageLink}
                     shuffle={this.shuffle}
